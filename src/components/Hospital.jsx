@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import Directions from './Directions';
 
 
-const USERAPI = 'https://api.geoapify.com/v1/geocode/search?name=Hyderabad&housenumber=c-638&street=Vanasthali%20puram&postcode=500070&city=Hyderabad&state=Telangana&country=India&limit=1&format=json&apiKey=d3eba6ce6a014eee8668f26b116e3624';
+const USERAPI = 'https://api.geoapify.com/v1/geocode/search?text=38%20Upper%20Montagu%20Street%2C%20London%20W1H%201LJ%2C%20United%20Kingdom&format=json&apiKey=8374c88b75914b36a69915f1b0ce51f3';
 const ROUTESAPI = `https://api.geoapify.com/v1/routing?waypoints=${17.667896},${77.589444}|${17.3707564},${78.44202}&mode=drive&details=instruction_details&apiKey=d3eba6ce6a014eee8668f26b116e3624`;
 
 
@@ -24,11 +24,11 @@ export default function Hospital() {
     useEffect(() => {
         async function getUsers(){
             const response = await axios.get(USERAPI)
-            // console.log(response.data.results)
+            console.log(response.data.results)
             setUsers(response.data.results)
         }
         getUsers();
-    })
+    }, [])
 
     useEffect(() => {
         async function getRoutes() {
